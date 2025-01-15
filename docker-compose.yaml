@@ -50,6 +50,8 @@ services:
     ports:
       - "5672:5672"
       - "15672:15672"
+    networks:
+      - spring
 
   eureka-server:
     image: reduxion/eureka-server:latest
@@ -85,9 +87,12 @@ services:
       - SPRING_PROFILES_ACTIVE=docker
     networks:
       - spring
+      - postgres
     depends_on:
       - zipkin
       - eureka-server
+      - postgres
+      - rabbitmq
 
   fraud:
     image: reduxion/fraud:latest
@@ -98,9 +103,12 @@ services:
       - SPRING_PROFILES_ACTIVE=docker
     networks:
       - spring
+      - postgres
     depends_on:
       - zipkin
       - eureka-server
+      - postgres
+      - rabbitmq
 
   notification:
     image: reduxion/notification:latest
@@ -111,9 +119,12 @@ services:
       - SPRING_PROFILES_ACTIVE=docker
     networks:
       - spring
+      - postgres
     depends_on:
       - zipkin
       - eureka-server
+      - postgres
+      - rabbitmq
 
 networks:
   postgres:

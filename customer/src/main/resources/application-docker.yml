@@ -7,10 +7,10 @@ spring:
   zipkin:
     base-url: http://zipkin:9411/
   rabbitmq:
-    addresses: "localhost:5672"
+    addresses: "rabbitmq:5672"
 
   datasource:
-    url: jdbc:postgresql://localhost:5432/customer # Update with your actual database name
+    url: jdbc:postgresql://postgres:5432/customer # Update with your actual database name
     username: user                                  # Your database username
     password: user                                  # Your database password
     driver-class-name: org.postgresql.Driver        # PostgreSQL driver class name

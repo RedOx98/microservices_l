@@ -1,0 +1,41 @@
+server:
+  port: 8086
+
+spring:
+  application:
+    name: notification
+  zipkin:
+    base-url: http://zipkin:9411/
+  rabbitmq:
+    addresses: "rabbitmq:5672"
+
+  datasource:
+    url: jdbc:postgresql://postgres:5432/notification # Update with your actual database name
+    username: user                                  # Your database username
+    password: user                                  # Your database password
+    driver-class-name: org.postgresql.Driver        # PostgreSQL driver class name
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop                              # Adjust based on your requirements (e.g., create, validate)
+    show-sql: true                                  # Enable SQL query logging
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true                            # Format SQL in logs for better readability
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka-server:8761/eureka
+    fetch-registry: true
+    register-wih-eureka: true
+    enabled: false
+
+rabbitmq:
+  exchanges:
+    internal: internal.exchange
+  queues:
+    notification: notification.queue
+  routing-keys:
+    internal-notification: internal.notification.routing-key

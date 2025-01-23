@@ -76,6 +76,17 @@ spec:
             limits:
               cpu: 500m
               memory: 512Mi
+#          lifecycle:
+#            postStart:
+#              exec:
+#                command:
+#                  - /bin/bash
+#                    - -c
+#                    - |
+#                    until psql -U user -d postgres -c 'CREATE DATABASE olaidescode;'; do
+#                    echo "Waiting for PostgreSQL to start..."
+#                    sleep 2
+#                    done
       volumes:
         - name: postgres
           persistentVolumeClaim:

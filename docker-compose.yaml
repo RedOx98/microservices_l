@@ -53,78 +53,78 @@ services:
     networks:
       - spring
 
-  eureka-server:
-    image: reduxion/eureka-server:latest
-    container_name: eureka-server
-    ports:
-      - "8761:8761"
-    environment:
-      - SPRING_PROFILES_ACTIVE=docker
-    networks:
-      - spring
-    depends_on:
-      - zipkin
+#  eureka-server:
+#    image: reduxion/eureka-server:latest
+#    container_name: eureka-server
+#    ports:
+#      - "8761:8761"
+#    environment:
+#      - SPRING_PROFILES_ACTIVE=docker
+#    networks:
+#      - spring
+#    depends_on:
+#      - zipkin
 
-  apigw:
-    image: reduxion/apigw:latest
-    container_name: apigw
-    ports:
-      - "8081:8081"
-    environment:
-      - SPRING_PROFILES_ACTIVE=docker
-    networks:
-      - spring
-    depends_on:
-      - zipkin
-      - eureka-server
+#  apigw:
+#    image: reduxion/apigw:latest
+#    container_name: apigw
+#    ports:
+#      - "8081:8081"
+#    environment:
+#      - SPRING_PROFILES_ACTIVE=docker
+#    networks:
+#      - spring
+#    depends_on:
+#      - zipkin
+#      - eureka-server
 
-  customer:
-    image: reduxion/customer:latest
-    container_name: customer
-    ports:
-      - "8085:8085"
-    environment:
-      - SPRING_PROFILES_ACTIVE=docker
-    networks:
-      - spring
-      - postgres
-    depends_on:
-      - zipkin
-      - eureka-server
-      - postgres
-      - rabbitmq
-
-  fraud:
-    image: reduxion/fraud:latest
-    container_name: fraud
-    ports:
-      - "8083:8083"
-    environment:
-      - SPRING_PROFILES_ACTIVE=docker
-    networks:
-      - spring
-      - postgres
-    depends_on:
-      - zipkin
-      - eureka-server
-      - postgres
-      - rabbitmq
-
-  notification:
-    image: reduxion/notification:latest
-    container_name: notification
-    ports:
-      - "8086:8086"
-    environment:
-      - SPRING_PROFILES_ACTIVE=docker
-    networks:
-      - spring
-      - postgres
-    depends_on:
-      - zipkin
-      - eureka-server
-      - postgres
-      - rabbitmq
+#  customer:
+#    image: reduxion/customer:latest
+#    container_name: customer
+#    ports:
+#      - "8085:8085"
+#    environment:
+#      - SPRING_PROFILES_ACTIVE=docker
+#    networks:
+#      - spring
+#      - postgres
+#    depends_on:
+#      - zipkin
+#      - eureka-server
+#      - postgres
+#      - rabbitmq
+#
+#  fraud:
+#    image: reduxion/fraud:latest
+#    container_name: fraud
+#    ports:
+#      - "8083:8083"
+#    environment:
+#      - SPRING_PROFILES_ACTIVE=docker
+#    networks:
+#      - spring
+#      - postgres
+#    depends_on:
+#      - zipkin
+#      - eureka-server
+#      - postgres
+#      - rabbitmq
+#
+#  notification:
+#    image: reduxion/notification:latest
+#    container_name: notification
+#    ports:
+#      - "8086:8086"
+#    environment:
+#      - SPRING_PROFILES_ACTIVE=docker #one needs to edit the app config and ser this to default from docker
+#    networks:
+#      - spring
+#      - postgres
+#    depends_on:
+#      - zipkin
+#      - eureka-server
+#      - postgres
+#      - rabbitmq
 
 networks:
   postgres:

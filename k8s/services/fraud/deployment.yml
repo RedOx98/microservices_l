@@ -21,6 +21,12 @@ spec:
           env:
             - name: SPRING_PROFILES_ACTIVE
               value: kube
+            - name: SPRING_DATASOURCE_USERNAME
+              value: linpostgres
+            - name: SPRING_DATASOURCE_USERNAME
+              value: jdbc:postgresql://postgres:5432/fraud # make sure to change the host from postgres to the ip from linode
+            - name: SPRING_DATASOURCE_PASSWORD
+              value: linpostgres #input the password value from linode
       restartPolicy: Always
   selector:
     matchLabels:

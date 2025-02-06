@@ -8,6 +8,10 @@ spring:
     base-url: http://localhost:9411/
   rabbitmq:
     addresses: "localhost:5672"
+  profiles:
+    active: default #we can switch our spring profiles between default, kube and docker here
+  kafka:
+    bootstrap-servers: localhost:9092
 
   datasource:
     url: jdbc:postgresql://localhost:5432/customer # Update with your actual database name
@@ -30,4 +34,4 @@ eureka:
       defaultZone: http://localhost:8761/eureka
     fetch-registry: true
     register-wih-eureka: true
-    enabled: false
+    enabled: true #one can change to true or false

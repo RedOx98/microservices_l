@@ -10,7 +10,8 @@ import org.springframework.context.annotation.PropertySources;
 @SpringBootApplication(
         scanBasePackages = {
                 "com.olahammed.customer",
-                "com.olahammed.amqp"
+                "com.olahammed.amqp",
+                "com.olaidescode.kafka"
         }
 )
 @EnableFeignClients(
